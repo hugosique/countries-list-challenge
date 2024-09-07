@@ -16,18 +16,10 @@ body {
     height: 100%;
 }
 
-.material-symbols-outlined {
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24;
-}
-
 .dark-mode .material-symbols-outlined.icon-dark {
     font-variation-settings:
         'FILL' 1,
-        'wght' 400,
+        'wght' 200,
         'GRAD' 0,
         'opsz' 24;
 }

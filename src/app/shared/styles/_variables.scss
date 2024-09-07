@@ -1,15 +1,19 @@
 :root {
+    --background: #fafafa;
+    --text: #111517;
+
     --elements-dark-color: #2b3945;
     --background-dark-color: #202c37;
     --text-light-color: #111517;
     --text-dark-color: #ffffff;
     --input-light-color: #858585;
-    --background-light-color: #fafafa;
 }
 
-:root .dark-theme {
+:root .dark-mode {
+    --background: #202c37;
+    --text: #ffffff;
+    
     --elements-dark-color: #2b3945;
-    --background-dark-color: #202c37;
     --text-light-color: #111517;
     --text-dark-color: #ffffff;
     --input-light-color: #858585;
