@@ -1,0 +1,30 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background-color: var(--background-light-color);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    .header__title {
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .header__theme-button {
+        background: none;
+        border: none;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        .theme-button__icon {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+        .theme-button__text {
+            font-size: 16px;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
