@@ -1,4 +1,4 @@
-export const COUTNRIES_SELEC_LIST = [
+export const COUTNRIES_SELECT_LIST = [
     {
         name: {
             common: "Germany",

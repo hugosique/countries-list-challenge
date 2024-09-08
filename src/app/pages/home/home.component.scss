@@ -1,13 +1,27 @@
-.countries-container {
-    padding: 0 80px;
-
-    .countries-container__filters {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        app-search-input {
-            width: 400px;
+:host {
+    .countries-container {
+        padding: 0 80px;
+        background: inherit;
+    
+        .countries-container__filters {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 30px 0;
+    
+            app-search-input {
+                width: 400px;
+            }
+        }
+    
+        .countries-container__list {
+            background: inherit;
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding-bottom: 30px;
+            overflow: auto;
         }
     }
 }

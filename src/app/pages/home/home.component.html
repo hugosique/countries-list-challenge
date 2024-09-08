@@ -1,8 +1,19 @@
 <app-header></app-header>
 <main class="countries-container">
-  <section class="countries-container__filters" style="margin-top: 10px;">
+  <section class="countries-container__filters">
     <app-search-input></app-search-input>
 
     <app-dropdown (selectionChanged)="onChangeSelection($event)"></app-dropdown>
+  </section>
+
+  <section class="countries-container__list">
+    <app-country-item></app-country-item>
+    <app-country-item></app-country-item>
+    <app-country-item></app-country-item>
+    <app-country-item></app-country-item>
+    <app-country-item></app-country-item>
+    <app-country-item></app-country-item>
+    <app-country-item></app-country-item>
+    <app-country-item></app-country-item>
   </section>
 </main>
