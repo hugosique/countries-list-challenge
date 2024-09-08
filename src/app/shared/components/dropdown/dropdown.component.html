@@ -1,0 +1,37 @@
+<button class="dropdown-input" (click)="toggleDropdownOptions($event)">
+  <span class="dropdown-input__title">
+    {{ selectedItem ? selectedItem.title : "Filter by Region" }}
+  </span>
+  <div class="dropdown-input__icons">
+    @if(selectedItem) {
+    <span
+      class="icons__cancel material-symbols-outlined"
+      (click)="clearSelection($event)"
+    >
+      close
+    </span>
+    }
+    <span
+      class="icons__down material-symbols-outlined"
+      [ngClass]="{ 'rotate-icon': isDropdownOpen }"
+    >
+      keyboard_arrow_down
+    </span>
+  </div>
+</button>
+
+<div
+  class="dropdown-options"
+  [ngStyle]="{ display: isDropdownOpen ? 'flex' : 'none' }"
+>
+  <ul class="dropdown-options__list">
+    @for(region of regionsSelectItems; track region.id) {
+        <li
+          class="dropdown-options__item"
+          (click)="selectItem(region, $event)"
+        >
+            {{region.title}}
+        </li>
+    }
+  </ul>
+</div>

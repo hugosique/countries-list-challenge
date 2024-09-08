@@ -1,33 +1,13 @@
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 80px;
-    background: var(--background);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    .header__title {
-        font-size: 24px;
-        font-weight: 600;
-        color: var(--text);
-    }
+.countries-container {
+    padding: 0 80px;
 
-    .header__theme-button {
-        background: none;
-        border: none;
+    .countries-container__filters {
         display: flex;
         align-items: center;
-        cursor: pointer;
-        .theme-button__icon {
-            font-size: 20px;
-            margin-right: 8px;
-            color: var(--text);
-        }
-        .theme-button__text {
-            font-size: 16px;
-            color: var(--text);
-            &:hover {
-                text-decoration: underline;
-            }
+        justify-content: space-between;
+
+        app-search-input {
+            width: 400px;
         }
     }
 }
