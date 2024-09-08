@@ -36,14 +36,37 @@ export class HomeComponent implements OnInit {
   }
 
   public onRegionChange(item: IRegion | null): void {
-    console.log(item)
+    this.loadingPage = true;
+
+    if(item) {
+      this.countryService.filterCountriesByRegion(item.value).pipe(
+        map((countries: any[]) => 
+          countries.map(country => ({
+            name: country.name.common,
+            population: country.population,
+            region: country.region,
+            capital: country.capital ? country.capital[0] : 'N/A',
+            flags: {
+              src: country.flags?.png || country.flags.png || 'N/A',
+              alt: country.flags?.alt
+            }
+          }))
+        )
+      ).subscribe(res => {
+        this.countriesSignal.set(res);
+        this.filteredCountriesSignal.set(res);
+        this.loadingPage = false;
+      });
+    } else {
+      this.loadAllCountries();
+    }
   }
   
   public onSearchInput(search: string): void {
     const filteredCountries = this.countriesSignal().filter(country => {
       return country.name.toLowerCase().includes(search.toLowerCase());
     });
-    
+
     this.filteredCountriesSignal.set(filteredCountries);
   }
 
