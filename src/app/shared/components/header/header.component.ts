@@ -11,7 +11,15 @@ export class HeaderComponent implements OnInit {
   currentTheme = 'Light';
   isDarkMode: boolean = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const savedTheme = localStorage.getItem('theme');
+
+    if(savedTheme) {
+      if(this.currentTheme !== savedTheme) {
+        this.toggleTheme();
+      };
+    }
+  }
 
   public toggleTheme(): void {
     const iconElement = document.querySelector('.theme-button__icon');
@@ -33,5 +41,7 @@ export class HeaderComponent implements OnInit {
         iconElement.classList.add('icon-light');
       }
     };
+
+    localStorage.setItem('theme', this.currentTheme);
   }
 }
