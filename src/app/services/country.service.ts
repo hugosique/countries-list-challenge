@@ -15,10 +15,14 @@ export class CountryService {
   }
 
   public filterCountriesByRegion(region: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/region/${region}`);
+    return this.http.get<any>(`${this.apiUrl}/region/${region}`);
   }
 
   public getSingleCountry(country: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/alpha/${country}`)
+    return this.http.get<any>(`${this.apiUrl}/name/${country}`)
+  }
+
+  public getSingleCountryByAlpha(code: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/alpha/${code}`)
   }
 }

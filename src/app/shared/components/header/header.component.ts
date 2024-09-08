@@ -12,12 +12,14 @@ export class HeaderComponent implements OnInit {
   isDarkMode: boolean = false;
 
   ngOnInit(): void {
-    const savedTheme = localStorage.getItem('theme');
-
-    if(savedTheme) {
-      if(this.currentTheme !== savedTheme) {
-        this.toggleTheme();
-      };
+    if(typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      
+      if(savedTheme) {
+        if(this.currentTheme !== savedTheme) {
+          this.toggleTheme();
+        };
+      }
     }
   }
 
