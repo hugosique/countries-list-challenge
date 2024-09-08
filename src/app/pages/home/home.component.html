@@ -1,7 +1,7 @@
 <app-header></app-header>
 <main class="countries-container">
   <section class="countries-container__filters">
-    <app-search-input></app-search-input>
+    <app-search-input (searchCountryEvent)="onSearchInput($event)"></app-search-input>
 
     <app-dropdown (selectionChanged)="onRegionChange($event)"></app-dropdown>
   </section>
@@ -12,10 +12,10 @@
         <div class="spinner"></div>
       </div>
     } @else {
-      @for(country of countriesSignal(); track country.name) {
+      @for(country of filteredCountriesSignal(); track country.name) {
         <app-country-item [countryData]="country"></app-country-item>
       } @empty {
-        <p>No country was found!</p>
+        <p class="no-found--text">No country was found!</p>
       }
     }
   </section>

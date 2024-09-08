@@ -6,7 +6,7 @@ import { SearchInputComponent } from '../../shared/components/search-input/searc
 import { DropdownComponent } from '../../shared/components/dropdown/dropdown.component';
 import { CountryItemComponent } from '../../shared/components/country-item/country-item.component';
 import { CountryService } from '../../services/country.service';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { ICountry } from '../../core/interfaces/country';
 import { IRegion } from '../../core/interfaces/regions';
 import { CommonModule, NgIf } from '@angular/common';
@@ -24,18 +24,27 @@ import { CommonModule, NgIf } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements AfterViewChecked {
+export class HomeComponent implements OnInit {
   loadingPage: boolean = true;
   countriesSignal = signal<ICountry[]>([]);
+  filteredCountriesSignal = signal<ICountry[]>([]);
 
   constructor(private countryService: CountryService) {}
   
-  ngAfterViewChecked(): void {
+  ngOnInit(): void {
     this.loadAllCountries();
   }
 
   public onRegionChange(item: IRegion | null): void {
     console.log(item)
+  }
+  
+  public onSearchInput(search: string): void {
+    const filteredCountries = this.countriesSignal().filter(country => {
+      return country.name.toLowerCase().includes(search.toLowerCase());
+    });
+    
+    this.filteredCountriesSignal.set(filteredCountries);
   }
 
   public loadAllCountries(): void {
@@ -54,6 +63,7 @@ export class HomeComponent implements AfterViewChecked {
       )
     ).subscribe(res => {
       this.countriesSignal.set(res);
+      this.filteredCountriesSignal.set(res);
       this.loadingPage = false;
     });
   }
