@@ -1,12 +1,12 @@
-<div class="country-item--container">
-    <img [src]="country.flags.png" [alt]="country.flags.png" class="country-item__flag">
+<div class="country-item--container" (click)="navigateToCountryDetails()">
+    <img [src]="countryData.flags.src" [alt]="countryData.flags.alt" class="country-item__flag">
     <div class="country-item--info">
 
-        <p class="info__country-name">{{ country.name.common }}</p>
+        <p class="info__country-name">{{ countryData.name }}</p>
         <div class="info--country-details">
-            <p class="country-details__data">Population: <span>{{ country.population | population }}</span></p>
-            <p class="country-details__data">Region: <span>{{ country.region }}</span></p>
-            <p class="country-details__data">Capital: <span>{{ country.capital }}</span></p>
+            <p class="country-details__data">Population: <span>{{ countryData.population | population }}</span></p>
+            <p class="country-details__data">Region: <span>{{ countryData.region }}</span></p>
+            <p class="country-details__data">Capital: <span>{{ countryData.capital }}</span></p>
         </div>
     </div>
 </div>

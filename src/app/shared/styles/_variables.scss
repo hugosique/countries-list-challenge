@@ -6,19 +6,13 @@
 
     --danger: #df3b3b;
 
-    --elements-dark-color: #2b3945;
-    --background-dark-color: #202c37;
+    --spinner-top: #202c37;
 }
 
 :root .dark-mode {
     --background: #202c37;
     --primary: #2b3945;
     --text: #ffffff;
-    --input-color: #858585;
-    
-    --elements-dark-color: #2b3945;
-    --text-light-color: #111517;
-    --text-dark-color: #ffffff;
-    --input-light-color: #858585;
-    --background-light-color: #fafafa;
+
+    --spinner-top: #111517;
 }

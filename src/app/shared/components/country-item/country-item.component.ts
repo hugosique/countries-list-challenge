@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { COUTNRIES_SELECT_LIST } from '../../constants/countries.const';
 import { PopulationPipe } from '../../pipes/population.pipe';
+import { ICountry } from '../../../core/interfaces/country';
 
 @Component({
   selector: 'app-country-item',
@@ -11,6 +12,10 @@ import { PopulationPipe } from '../../pipes/population.pipe';
 })
 export class CountryItemComponent {
 
-  country = COUTNRIES_SELECT_LIST[0];
+  @Input() countryData!: ICountry;
+
+  public navigateToCountryDetails(): void {
+    console.log(this.countryData)
+  }
 
 }

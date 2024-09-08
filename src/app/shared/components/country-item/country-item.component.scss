@@ -1,5 +1,6 @@
 .country-item--container {
     width: 260px;
+    height: auto;
     background: var(--primary);
     border-radius: 4px;
     overflow: hidden;
@@ -12,6 +13,7 @@
 
     .country-item__flag {
         width: inherit;
+        height: 130px;
     }
     .country-item--info {
         padding: 20px 20px;

@@ -3,17 +3,20 @@
   <section class="countries-container__filters">
     <app-search-input></app-search-input>
 
-    <app-dropdown (selectionChanged)="onChangeSelection($event)"></app-dropdown>
+    <app-dropdown (selectionChanged)="onRegionChange($event)"></app-dropdown>
   </section>
 
   <section class="countries-container__list">
-    <app-country-item></app-country-item>
-    <app-country-item></app-country-item>
-    <app-country-item></app-country-item>
-    <app-country-item></app-country-item>
-    <app-country-item></app-country-item>
-    <app-country-item></app-country-item>
-    <app-country-item></app-country-item>
-    <app-country-item></app-country-item>
+    @if(loadingPage) {
+      <div class="loading-indicator">
+        <div class="spinner"></div>
+      </div>
+    } @else {
+      @for(country of countriesSignal(); track country.name) {
+        <app-country-item [countryData]="country"></app-country-item>
+      } @empty {
+        <p>No country was found!</p>
+      }
+    }
   </section>
 </main>

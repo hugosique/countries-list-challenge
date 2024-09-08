@@ -12,7 +12,8 @@ export const routes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'country/:id',
-        loadComponent: () => import('./pages/country-details/country-details.component').then(m => m.CountryDetailsComponent)
+        path: 'country/:code',
+        loadComponent: () => import('./pages/country-details/country-details.component').then(m => m.CountryDetailsComponent),
+        data: {suspense: true}
     }
 ];
