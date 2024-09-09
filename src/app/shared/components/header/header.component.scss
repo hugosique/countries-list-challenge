@@ -33,3 +33,24 @@
         }
     }
 }
+
+@media(max-width:490px) {
+    .header {
+        padding: 0 20px;
+        height: 90px;
+        .header__title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+        }
+    
+        .header__theme-button {
+            .theme-button__icon {
+                font-size: 18px;
+            }
+            .theme-button__text {
+                font-size: 12px;
+            }
+        }
+    }
+}
