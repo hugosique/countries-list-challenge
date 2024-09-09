@@ -16,7 +16,7 @@ import { forkJoin } from 'rxjs';
   styleUrl: './country-details.component.scss'
 })
 export class CountryDetailsComponent implements OnInit{
-
+  loadingPage: boolean = true;
   countryCode!: string;
   countryDetails: any;
   borderCountries: any;
@@ -39,6 +39,7 @@ export class CountryDetailsComponent implements OnInit{
   }
 
   public openBorderCountryDetails(countryTitle: string) {
+    this.loadingPage = true;
     this.router.navigate(['/country', countryTitle.toLowerCase()]);
   }
 
@@ -62,6 +63,8 @@ export class CountryDetailsComponent implements OnInit{
         return {name: el[0].name, alphaCode: el[0].alphaCode}
       });
     });
+
+    this.loadingPage = false;
   }
 
   public loadCountryDetails() {
@@ -70,7 +73,6 @@ export class CountryDetailsComponent implements OnInit{
         countries.map(country => {
           const languageKey = Object.keys(country.languages)[0];
           const currencyKey = Object.keys(country.currencies)[0];
-          console.log(country)
   
           return {
             name: country.name.common,
@@ -94,7 +96,11 @@ export class CountryDetailsComponent implements OnInit{
     ).subscribe(res => {
       this.countryDetails = res[0];
 
-      if(this.countryDetails.borders) this.loadCountryBordersData(this.countryDetails.borders);
+      if(this.countryDetails.borders) {
+        this.loadCountryBordersData(this.countryDetails.borders)
+      } else {
+        this.loadingPage = false;
+      }
     });
   }
 }
