@@ -1,8 +1,8 @@
 # Author
 
-Name: Hugo Siqueira
-LinkedIn: https://www.linkedin.com/in/hugo-siqueira007/
-GitHub: https://github.com/hugosique
+*** Name: *** Hugo Siqueira
+*** LinkedIn: *** https://www.linkedin.com/in/hugo-siqueira007/
+*** GitHub: *** https://github.com/hugosique
 
 # Description
 
