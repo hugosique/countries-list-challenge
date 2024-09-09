@@ -51,13 +51,12 @@
 
                 .details--info {
                     display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    margin: 40px 0;
+                    flex-direction: column;                
 
                     .details--info__name {
                         font-size: 25px;
                         color: var(--text);
+                        margin-bottom: 30px;
                     }
 
                     .details--info__country {
@@ -82,8 +81,11 @@
                     }
 
                     .details--info__border {
+                        margin-top: 30px;
                         display: flex;
                         align-items: center;
+                        max-width: 400px;
+                        flex-wrap: wrap;
                         gap: 8px;
 
                         .border-title {
