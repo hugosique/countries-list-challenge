@@ -1,3 +1,13 @@
+# Author
+
+Name: Hugo Siqueira
+LinkedIn: https://www.linkedin.com/in/hugo-siqueira007/
+GitHub: https://github.com/hugosique
+
+# Description
+
+Test the countries project, you can search any country on the serach input and click in the country to see more information about. You can also filter countries by region.
+
 # CountriesListChallenge
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.1.
