@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { COUTNRIES_SELECT_LIST } from '../../shared/constants/countries.const';
 import { PopulationPipe } from '../../shared/pipes/population.pipe';
 import { CommonModule } from '@angular/common';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-country-details',
@@ -18,6 +19,7 @@ export class CountryDetailsComponent implements OnInit{
 
   countryCode!: string;
   countryDetails: any;
+  borderCountries: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -28,13 +30,38 @@ export class CountryDetailsComponent implements OnInit{
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
       this.countryCode = params.get('code') || '';
+      this.loadCountryDetails();
     });
-
-    this.loadCountryDetails();
   }
 
   public backToHomePage(): void {
     this.router.navigate(['home']);
+  }
+
+  public openBorderCountryDetails(countryTitle: string) {
+    this.router.navigate(['/country', countryTitle.toLowerCase()]);
+  }
+
+  public loadCountryBordersData(countriesCode: string[]) {
+    let borderRequests: any = []
+    countriesCode.forEach(code => {
+      borderRequests.push(this.countryService.getSingleCountryByAlpha(code).pipe(
+        map((countries: any[]) => 
+          countries.map(country => ({
+            name: country.name.common,
+            alphaCode: country.cca3
+          }))
+        )
+      ));
+    });
+
+    forkJoin(borderRequests).subscribe(results => {
+      this.borderCountries = results;
+      
+      this.borderCountries = this.borderCountries.map((el: any) => {
+        return {name: el[0].name, alphaCode: el[0].alphaCode}
+      });
+    });
   }
 
   public loadCountryDetails() {
@@ -43,6 +70,7 @@ export class CountryDetailsComponent implements OnInit{
         countries.map(country => {
           const languageKey = Object.keys(country.languages)[0];
           const currencyKey = Object.keys(country.currencies)[0];
+          console.log(country)
   
           return {
             name: country.name.common,
@@ -65,7 +93,8 @@ export class CountryDetailsComponent implements OnInit{
       )
     ).subscribe(res => {
       this.countryDetails = res[0];
-      console.log(this.countryDetails)
+
+      if(this.countryDetails.borders) this.loadCountryBordersData(this.countryDetails.borders);
     });
   }
 }

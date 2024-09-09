@@ -8,38 +8,73 @@
       <span class="back-button__text">Back</span>
     </button>
 
+    @if(countryDetails) {
     <div class="country-container__details">
-      <img class="details--flag" [src]="countryDetails.flags.src" [alt]="countryDetails.flags.alt">
+      <img
+        class="details--flag"
+        [src]="countryDetails.flags.src"
+        [alt]="countryDetails.flags.alt"
+      />
       <div class="details--info">
-
-        <h2 class="details--info__name">{{countryDetails.name }}</h2>
+        <h2 class="details--info__name">{{ countryDetails.name }}</h2>
 
         <div class="details--info__country">
           <div class="column">
-            <p class="country-info__data">Native name: <span>{{ countryDetails.nativeName.common }}</span></p>
-            <p class="country-info__data">Native name: <span>{{ countryDetails.population | population }}</span></p>
-            <p class="country-info__data">Native name: <span>{{ countryDetails.region }}</span></p>
-            <p class="country-info__data">Native name: <span>{{ countryDetails.subregion }}</span></p>
-            <p class="country-info__data">Native name: <span>{{ countryDetails.capital }}</span></p>
+            <p class="country-info__data">
+              Native name: <span>{{ countryDetails.nativeName.common }}</span>
+            </p>
+            <p class="country-info__data">
+              Population:
+              <span>{{ countryDetails.population | population }}</span>
+            </p>
+            <p class="country-info__data">
+              Region: <span>{{ countryDetails.region }}</span>
+            </p>
+            <p class="country-info__data">
+              Sub Region: <span>{{ countryDetails.subregion }}</span>
+            </p>
+            <p class="country-info__data">
+              Capital: <span>{{ countryDetails.capital }}</span>
+            </p>
           </div>
           <div class="column">
-            <p class="country-info__data">Native name: <span>{{ countryDetails.topLevelDomain }}</span></p>
-            <p class="country-info__data">Native name: <span>{{ countryDetails.currencies }}</span></p>
             <p class="country-info__data">
-              Native name:
-                <ng-container *ngFor="let language of countryDetails.languages; let last = last">
-                  <span>{{ language }}</span><span *ngIf="!last">, </span>
-                </ng-container>
+              Top Level Domain: <span>{{ countryDetails.topLevelDomain }}</span>
+            </p>
+            <p class="country-info__data">
+              Currencies: <span>{{ countryDetails.currencies }}</span>
+            </p>
+            <p class="country-info__data">
+              Languages:
+              <ng-container
+                *ngFor="
+                  let language of countryDetails.languages;
+                  let last = last
+                "
+              >
+                <span>{{ language }}</span
+                ><span *ngIf="!last">, </span>
+              </ng-container>
             </p>
           </div>
         </div>
 
+        @if(borderCountries) {
         <div class="details--info__border">
           <p class="border-title">Border Countries:</p>
 
-          <button class="border-countries">France</button>
+          @for(borderCountry of borderCountries; track borderCountry.name) {
+          <button
+            class="border-countries"
+            (click)="openBorderCountryDetails(borderCountry.name)"
+          >
+            {{ borderCountry.name }}
+          </button>
+          }
         </div>
+        }
       </div>
     </div>
+    }
   </div>
 </main>

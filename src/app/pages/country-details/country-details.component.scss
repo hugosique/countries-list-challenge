@@ -46,6 +46,7 @@
                 .details--flag {
                     height: 300px;
                     width: 400px;
+
                 }
 
                 .details--info {
@@ -82,14 +83,28 @@
 
                     .details--info__border {
                         display: flex;
-                        gap: 4px;
+                        align-items: center;
+                        gap: 8px;
+
                         .border-title {
                             font-size: 14px;
                             color: var(--text);
                             font-weight: 600;
                         }
                         .border-countries {
+                            padding: 0 20px;
+                            height: 25px;
+                            background: var(--primary);
+                            border-radius: 4px;
+                            border: none;
+                            color: var(--text);
+                            font-size: 12px;
+                            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+                            cursor: pointer;
 
+                            &:hover {
+                                background: var(--background);
+                            }
                         }
                     }
                 }
